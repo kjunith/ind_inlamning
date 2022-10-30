@@ -1,5 +1,6 @@
 package post;
 
+import profile.ProfileData;
 import util.UserInputHandler;
 import util.json.JsonDataHandler;
 import util.presenter.Presenter;
@@ -18,17 +19,17 @@ public class PostManager {
         this.presenter = presenter;
     }
 
-    public void writeNewPost() {
-        PostData post = createPost();
+    public void writePost(ProfileData profileData) {
+        PostData post = createPost(profileData);
         savePostData(post);
     }
 
-    public void viewAllPosts() {
+    public void viewPosts(ProfileData profileData) {
         ArrayList<PostData> posts = dataHandler.getAllData();
         presenter.printAll(posts);
     }
 
-    private PostData createPost() {
+    private PostData createPost(ProfileData profileData) {
         String title = UserInputHandler.getString(ENTER_TITLE);
         String content = UserInputHandler.getString(ENTER_CONTENT);
         long date = System.currentTimeMillis();

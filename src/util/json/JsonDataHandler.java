@@ -5,6 +5,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -41,7 +42,7 @@ public abstract class JsonDataHandler<T> {
             file.write(dataArray.toJSONString());
             file.flush();
         } catch (IOException e) {
-            e.printStackTrace();
+            new File(FILE_PATH);
         }
     }
 
@@ -52,7 +53,7 @@ public abstract class JsonDataHandler<T> {
         try (FileReader file = new FileReader(FILE_PATH)) {
             dataArray = (JSONArray) parser.parse(file);
         } catch (IOException | ParseException e) {
-            e.printStackTrace();
+            new File(FILE_PATH);
         }
 
         return dataArray;

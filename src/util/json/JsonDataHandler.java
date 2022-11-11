@@ -15,14 +15,39 @@ import java.util.ArrayList;
 public abstract class JsonDataHandler<T> {
     private final String FILE_PATH;
 
+    /**
+     * Constructor wita path to file location
+     *
+     * @param filePath file location
+     */
     protected JsonDataHandler(String filePath) {
         FILE_PATH = filePath;
     }
 
+    /**
+     * Generic method takes json object and returns
+     * generic object T.
+     *
+     * @param data json object
+     * @return object T
+     */
     public abstract T objectFromData(JSONObject data);
 
+    /**
+     * Generic method takes generic data object T
+     * and returns a json object.
+     *
+     * @param t generic data
+     * @return json object
+     */
     public abstract JSONObject dataFromObject(T t);
 
+    /**
+     * Generic method used to fetch data from file
+     * and returns a list of generic object T.
+     *
+     * @return list off object T
+     */
     public ArrayList<T> getAllData() {
         ArrayList<T> list = new ArrayList<>();
         JSONArray dataArray = getDataArray();
@@ -33,6 +58,12 @@ public abstract class JsonDataHandler<T> {
         return list;
     }
 
+    /**
+     * Generic method takes generic object T and
+     * coverts to json object and saves to file.
+     *
+     * @param t generic object T
+     */
     public void saveData(T t) {
         JSONObject data = dataFromObject(t);
         JSONArray dataArray = getDataArray();
@@ -46,6 +77,12 @@ public abstract class JsonDataHandler<T> {
         }
     }
 
+    /**
+     * Generic method reads data from file and
+     * returns an json array object
+     *
+     * @return json array object
+     */
     private JSONArray getDataArray() {
         JSONParser parser = new JSONParser();
         JSONArray dataArray = new JSONArray();

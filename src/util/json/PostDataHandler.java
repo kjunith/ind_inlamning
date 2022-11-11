@@ -14,6 +14,14 @@ public class PostDataHandler extends JsonDataHandler<PostData> {
         super("posts.json");
     }
 
+    /**
+     * Overrides generic method from JsonDataHandler
+     * to use for post data handling
+     *
+     * @param data json object
+     * @return post data
+     * @see JsonDataHandler
+     */
     @Override
     public PostData objectFromData(JSONObject data) {
         String title = (String) data.get(TITLE);
@@ -22,6 +30,14 @@ public class PostDataHandler extends JsonDataHandler<PostData> {
         return new Post(title, content, date);
     }
 
+    /**
+     * Overrides generic method from JsonDataHandler
+     * to use for post data handling
+     *
+     * @param post post object
+     * @return json object
+     * @see JsonDataHandler
+     */
     @Override
     public JSONObject dataFromObject(PostData post) {
         JSONObject postData = new JSONObject();

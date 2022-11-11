@@ -18,6 +18,14 @@ public class ProfileDataHandler extends JsonDataHandler<ProfileData> {
         super("profiles.json");
     }
 
+    /**
+     * Overrides generic method from JsonDataHandler
+     * to use for profile data handling
+     *
+     * @param data json object
+     * @return profile data
+     * @see JsonDataHandler
+     */
     @Override
     public ProfileData objectFromData(JSONObject data) {
         String name = (String) data.get(NAME);
@@ -27,6 +35,14 @@ public class ProfileDataHandler extends JsonDataHandler<ProfileData> {
         return new Profile(name, postData, created);
     }
 
+    /**
+     * Overrides generic method from JsonDataHandler
+     * to use for profile data handling
+     *
+     * @param profile post object
+     * @return json object
+     * @see JsonDataHandler
+     */
     @Override
     public JSONObject dataFromObject(ProfileData profile) {
         JSONObject profileData = new JSONObject();
